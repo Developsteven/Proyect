@@ -17,7 +17,7 @@ public class TipoDocumento {
 	@Column(name = "id_tipo_documento", nullable = false)
 	private int id;
 	
-	@Column(name = "nombre", nullable = false)
+	@Column(nullable = false)
 	private String nombre;
 
 	public int getId() {
