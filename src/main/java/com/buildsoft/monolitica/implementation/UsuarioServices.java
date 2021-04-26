@@ -5,7 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.buildsoft.monolitica.dao.IRolDao;
 import com.buildsoft.monolitica.dao.IUsuarioDao;
+import com.buildsoft.monolitica.entity.Rol;
 import com.buildsoft.monolitica.entity.Usuario;
 import com.buildsoft.monolitica.services.IUsuarioServices;
 
@@ -15,6 +18,9 @@ public class UsuarioServices implements IUsuarioServices{
 
 	@Autowired
 	private IUsuarioDao usuarioDao;
+	
+	@Autowired
+	private IRolDao rolDao;
 	
 	@Override
 	@Transactional(readOnly = true)
@@ -33,6 +39,12 @@ public class UsuarioServices implements IUsuarioServices{
 	public Usuario create(Usuario usuario) {
 		System.out.println(usuario.getTipoDocumento());
 		return usuarioDao.save(usuario);
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public List<Rol> findAllRol() {
+		return (List<Rol>) rolDao.findAll();
 	}
 
 

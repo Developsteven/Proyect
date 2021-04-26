@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.buildsoft.monolitica.dao.IRolDao;
+import com.buildsoft.monolitica.entity.Rol;
 import com.buildsoft.monolitica.entity.Usuario;
 import com.buildsoft.monolitica.services.IUsuarioServices;
 
@@ -25,6 +27,10 @@ public class UsuarioRestController {
 	
 	@Autowired
 	private IUsuarioServices usuarioServices;
+	
+	
+	@Autowired
+	private IRolDao rolDao;
 	
 	@GetMapping("/usuario")
 	public List<Usuario> index() {
@@ -58,6 +64,11 @@ public class UsuarioRestController {
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
 		}
 		return new ResponseEntity<Usuario>(usuario, HttpStatus.OK);
+	}
+	
+	@GetMapping("/rol")
+	public List<Rol> listarRoles() {
+		return (List<Rol>) rolDao.findAll();
 	}
 	
 	
