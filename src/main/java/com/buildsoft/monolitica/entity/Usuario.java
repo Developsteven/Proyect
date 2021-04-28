@@ -4,12 +4,10 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -18,14 +16,10 @@ import javax.persistence.Table;
 public class Usuario implements Serializable{
 	
 	
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_usuario", nullable = false)
 	private Long id;
-	
-	@Column(nullable = false)
-	private String documento;
 	
 	@Column(nullable = false)
 	private String nombre;
@@ -35,10 +29,7 @@ public class Usuario implements Serializable{
 	
 	@Column( nullable = false, unique = true)
 	private String mail;
-	
-	@Column(nullable = false)
-	private String telefono;
-	
+
 	@Column(nullable = false)
 	private boolean estado;
 	
@@ -46,9 +37,7 @@ public class Usuario implements Serializable{
 	@JoinColumn(name = "id_rol_fk", nullable = false)
 	private Rol rol;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "id_tipoDocumento_fk", nullable = false)
-	private TipoDocumento tipoDocumento;
+
 
 	public Usuario() {
 
@@ -60,15 +49,6 @@ public class Usuario implements Serializable{
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	
-	public String getDocumento() {
-		return documento;
-	}
-
-	public void setDocumento(String documento) {
-		this.documento = documento;
 	}
 
 	public String getNombre() {
@@ -108,7 +88,6 @@ public class Usuario implements Serializable{
 		this.rol = rol;
 	}
 
-
 	public String getApellido() {
 		return apellido;
 	}
@@ -119,32 +98,13 @@ public class Usuario implements Serializable{
 	}
 
 
-	public String getTelefono() {
-		return telefono;
-	}
-
-
-	public void setTelefono(String telefono) {
-		this.telefono = telefono;
-	}
-
-
-	public TipoDocumento getTipoDocumento() {
-		return tipoDocumento;
-	}
-
-
-	public void setTipoDocumento(TipoDocumento tipoDocumento) {
-		this.tipoDocumento = tipoDocumento;
-	}
-
-
 	@Override
 	public String toString() {
-		return "Usuario [id=" + id + ", documento=" + documento + ", nombre=" + nombre + ", apellido=" + apellido
-				+ ", mail=" + mail + ", telefono=" + telefono + ", estado=" + estado + ", rol=" + rol
-				+ ", tipoDocumento=" + tipoDocumento + "]";
+		return "Usuario [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", mail=" + mail + ", estado="
+				+ estado + ", rol=" + rol + "]";
 	}
+
+
 
 	private static final long serialVersionUID = 1L;
 	

@@ -37,7 +37,6 @@ public class UsuarioServices implements IUsuarioServices{
 	@Override
 	@Transactional(readOnly = false)
 	public Usuario create(Usuario usuario) {
-		System.out.println(usuario.getTipoDocumento());
 		return usuarioDao.save(usuario);
 	}
 
