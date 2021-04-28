@@ -82,6 +82,16 @@ public class Aprendiz implements Serializable{
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
+	
+	public TipoDocumento getTipoDocumento() {
+		return tipoDocumento;
+	}
+
+
+	public void setTipoDocumento(TipoDocumento tipoDocumento) {
+		this.tipoDocumento = tipoDocumento;
+	}
+
 
 	@Override
 	public String toString() {
