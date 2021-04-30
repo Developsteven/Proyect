@@ -11,6 +11,7 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.buildsoft.monolitica.entity.Aprendiz;
 import com.buildsoft.monolitica.services.IUsuarioServices;
 
-
+@CrossOrigin(origins = { "http://localhost:4200" })
 @RestController
 @RequestMapping("/api")
 public class AprendizRestController {
@@ -137,7 +138,7 @@ public class AprendizRestController {
 		}
 		
 		response.put("mensaje", "El cliente ha sido actualizado con éxito!");
-		response.put("cliente", aprendizUpdated);
+		response.put("aprendiz", aprendizUpdated);
 
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}

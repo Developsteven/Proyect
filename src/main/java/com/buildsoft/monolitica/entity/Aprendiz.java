@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
 
 
 @Entity
@@ -22,15 +24,20 @@ public class Aprendiz implements Serializable{
 	@Column(name = "id_aprendiz", nullable = false)
 	private Long id;
 	
+	@NotEmpty
 	@Column( nullable = false)
 	private String documento;
 	
+	@NotEmpty
 	@Column( nullable = false)
 	private String nombre;
 	
+	@NotEmpty
 	@Column( nullable = false)
 	private String apellido;
 	
+	@NotEmpty
+	@Email
 	@Column( nullable = false, unique = true)
 	private String mail;
 	

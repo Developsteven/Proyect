@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "usuarios")
@@ -21,14 +23,22 @@ public class Usuario implements Serializable{
 	@Column(name = "id_usuario", nullable = false)
 	private Long id;
 	
+	@NotEmpty
 	@Column(nullable = false)
 	private String nombre;
 	
+	@NotEmpty
 	@Column(nullable = false)
 	private String apellido;
 	
+	@NotEmpty
+	@Email
 	@Column( nullable = false, unique = true)
 	private String mail;
+	
+	@NotEmpty
+	@Column(nullable = false)
+	private String password;
 
 	@Column(nullable = false)
 	private boolean estado;
@@ -86,6 +96,14 @@ public class Usuario implements Serializable{
 
 	public void setRol(Rol rol) {
 		this.rol = rol;
+	}
+	
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public String getApellido() {
