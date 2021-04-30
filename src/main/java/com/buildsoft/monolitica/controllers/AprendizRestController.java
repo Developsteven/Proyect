@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
@@ -21,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.buildsoft.monolitica.entity.Aprendiz;
+import com.buildsoft.monolitica.entity.TipoDocumento;
 import com.buildsoft.monolitica.services.IUsuarioServices;
 
 @CrossOrigin(origins = { "http://localhost:4200" })
@@ -62,7 +65,7 @@ public class AprendizRestController {
 	}
 	
 	@PostMapping("/aprendiz")
-	public ResponseEntity<?> create(@RequestBody Aprendiz aprendiz, BindingResult result) {
+	public ResponseEntity<?> create(@Valid @RequestBody Aprendiz aprendiz, BindingResult result) {
 		
 		Aprendiz aprendizNew = null;
 		
@@ -95,7 +98,7 @@ public class AprendizRestController {
 	}
 	
 	@PutMapping("/aprendiz/{id}")
-	public ResponseEntity<?> update(@RequestBody Aprendiz aprendiz, BindingResult result, @PathVariable Long id){
+	public ResponseEntity<?> update(@Valid @RequestBody Aprendiz aprendiz, BindingResult result, @PathVariable Long id){
 		
 		Aprendiz aprendizActual = usuarioServices.findByIdAprendiz(id);
 		
@@ -142,4 +145,10 @@ public class AprendizRestController {
 
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}
+	
+	@GetMapping("/aprendiz/documento")
+	public List<TipoDocumento> listarDocumentos(){
+		return usuarioServices.findAllDocumento();
+	}
+	
 }

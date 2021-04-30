@@ -8,9 +8,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.buildsoft.monolitica.dao.IAprendizDao;
 import com.buildsoft.monolitica.dao.IRolDao;
+import com.buildsoft.monolitica.dao.ITipoDocumentoDao;
 import com.buildsoft.monolitica.dao.IUsuarioDao;
 import com.buildsoft.monolitica.entity.Aprendiz;
 import com.buildsoft.monolitica.entity.Rol;
+import com.buildsoft.monolitica.entity.TipoDocumento;
 import com.buildsoft.monolitica.entity.Usuario;
 import com.buildsoft.monolitica.services.IUsuarioServices;
 
@@ -26,6 +28,9 @@ public class UsuarioServices implements IUsuarioServices{
 	
 	@Autowired
 	private IRolDao rolDao;
+	
+	@Autowired
+	private ITipoDocumentoDao documentoDao;
 	
 	@Override
 	@Transactional(readOnly = true)
@@ -68,6 +73,12 @@ public class UsuarioServices implements IUsuarioServices{
 	@Transactional(readOnly = true)
 	public Aprendiz findByIdAprendiz(Long id) {
 		return aprendizDao.findById(id).orElse(null);
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public List<TipoDocumento> findAllDocumento() {
+		return (List<TipoDocumento>) documentoDao.findAll();
 	}
 
 

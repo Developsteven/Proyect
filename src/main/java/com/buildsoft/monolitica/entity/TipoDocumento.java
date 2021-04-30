@@ -15,16 +15,16 @@ public class TipoDocumento {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_tipo_documento", nullable = false)
-	private int id;
+	private Long id;
 	
 	@Column(nullable = false)
 	private String nombre;
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

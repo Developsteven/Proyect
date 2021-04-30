@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
@@ -42,7 +44,7 @@ public class UsuarioRestController {
 	}
 
 	@PostMapping("/usuario")
-	public ResponseEntity<?> create(@RequestBody Usuario usuario, BindingResult result) {
+	public ResponseEntity<?> create(@Valid @RequestBody Usuario usuario, BindingResult result) {
 		
 		Usuario usuariotNew = null;
 		Map<String, Object> response = new HashMap<>();
@@ -98,7 +100,7 @@ public class UsuarioRestController {
 	}
 	
 	@PutMapping("/usuario/{id}")
-	public ResponseEntity<?> update(@RequestBody Usuario usuario, BindingResult result, @PathVariable Long id){
+	public ResponseEntity<?> update(@Valid @RequestBody Usuario usuario, BindingResult result, @PathVariable Long id){
 		
 		Usuario usuarioActual = usuarioServices.findById(id);
 		
@@ -147,7 +149,7 @@ public class UsuarioRestController {
 	
 	
 	
-	@GetMapping("/rol")
+	@GetMapping("/usuario/rol")
 	public List<Rol> listarRoles() {
 		return (List<Rol>) rolDao.findAll();
 	}

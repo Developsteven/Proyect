@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.buildsoft.monolitica.entity.Aprendiz;
 import com.buildsoft.monolitica.entity.Rol;
+import com.buildsoft.monolitica.entity.TipoDocumento;
 import com.buildsoft.monolitica.entity.Usuario;
 
 
@@ -23,5 +24,5 @@ public interface IUsuarioServices {
 	
 	public Aprendiz createAprendiz(Aprendiz aprendiz);
 	
-	
+	public List<TipoDocumento> findAllDocumento();
 }
