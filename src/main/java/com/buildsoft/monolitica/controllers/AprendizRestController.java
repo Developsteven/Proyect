@@ -146,7 +146,7 @@ public class AprendizRestController {
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}
 	
-	@GetMapping("/aprendiz/documento")
+	@GetMapping("/aprendiz/tipoDocumentos")
 	public List<TipoDocumento> listarDocumentos(){
 		return usuarioServices.findAllDocumento();
 	}

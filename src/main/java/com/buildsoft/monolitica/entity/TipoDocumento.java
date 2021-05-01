@@ -1,5 +1,7 @@
 package com.buildsoft.monolitica.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,9 +11,10 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "tipo_Documento")
-public class TipoDocumento {
+public class TipoDocumento implements Serializable{
 
 	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_tipo_documento", nullable = false)
@@ -36,5 +39,12 @@ public class TipoDocumento {
 		this.nombre = nombre;
 	}
 	
-	
+
+	@Override
+	public String toString() {
+		return "TipoDocumento [id=" + id + ", nombre=" + nombre + "]";
+	}
+
+
+	private static final long serialVersionUID = 1L;
 }

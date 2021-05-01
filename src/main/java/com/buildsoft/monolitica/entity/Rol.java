@@ -20,12 +20,9 @@ public class Rol implements Serializable{
 	@Column(name = "id_rol", nullable = false)
 	private Long id;
 	
-	@Column(name = "descripcion", nullable = false)
-	private String descripcion;
+	@Column(name = "nombre", nullable = false)
+	private String nombre;
 	
-	
-	@Column(name = "estado", nullable = false)
-	private boolean estado;
 
 	public Rol() {
 
@@ -40,26 +37,19 @@ public class Rol implements Serializable{
 	}
 
 
-	public String getDescripcion() {
-		return descripcion;
-	}
-
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
-
-	public boolean getEstado() {
-		return estado;
-	}
-
-	public void setEstado(boolean estado) {
-		this.estado = estado;
-	}
-
 	@Override
 	public String toString() {
-		return "Rol [id=" + id + ", descripcion=" + descripcion + ", estado=" + estado + "]";
+		return "Rol [id=" + id + ", nombre=" + nombre + "]";
 	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
 
 	private static final long serialVersionUID = 1L;
 }
