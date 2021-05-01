@@ -10,6 +10,8 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -39,6 +41,11 @@ public class AprendizRestController {
 	@GetMapping("/aprendiz")
 	public List<Aprendiz> index() {
 		return usuarioServices.findAllAprendiz();
+	}
+	
+	@GetMapping("/aprendiz/page/{page}")
+	public Page<Aprendiz> index(@PathVariable Integer page) {
+		return usuarioServices.findAllAprendiz(PageRequest.of(page, 4));
 	}
 	
 	@GetMapping("/aprendiz/{id}")

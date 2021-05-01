@@ -2,6 +2,9 @@ package com.buildsoft.monolitica.services;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 import com.buildsoft.monolitica.entity.Aprendiz;
 import com.buildsoft.monolitica.entity.Rol;
 import com.buildsoft.monolitica.entity.TipoDocumento;
@@ -12,6 +15,8 @@ public interface IUsuarioServices {
 	
 	public List<Usuario> findAll();
 	
+	public Page<Usuario> findAll(Pageable pageable);
+	
 	public Usuario findById(Long id);
 	
 	public Usuario create(Usuario usuario);
@@ -19,6 +24,8 @@ public interface IUsuarioServices {
 	public List<Rol> findAllRol();
 	
 	public List<Aprendiz> findAllAprendiz();
+	
+	public Page<Aprendiz> findAllAprendiz(Pageable pageable);
 	
 	public Aprendiz findByIdAprendiz(Long id);
 	
