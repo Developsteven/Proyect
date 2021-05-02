@@ -15,6 +15,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
 
+
 @Entity
 @Table(name = "aprendices")
 public class Aprendiz implements Serializable{
@@ -47,6 +48,17 @@ public class Aprendiz implements Serializable{
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_tipoDocumento_fk", nullable = false)
 	private TipoDocumento tipoDocumento;
+	
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "id_ficha_fk")
+	private Ficha ficha;
+	
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "id_trimestre_fk")
+	private Trimestre trimestre;
+	
 	
 	public Aprendiz() {
 		
@@ -99,12 +111,29 @@ public class Aprendiz implements Serializable{
 		this.tipoDocumento = tipoDocumento;
 	}
 
+	public Ficha getFicha() {
+		return ficha;
+	}
+
+	public void setFicha(Ficha ficha) {
+		this.ficha = ficha;
+	}
+
+	public Trimestre getTrimestre() {
+		return trimestre;
+	}
+
+	public void setTrimestre(Trimestre trimestre) {
+		this.trimestre = trimestre;
+	}
 
 	@Override
 	public String toString() {
 		return "Aprendiz [id=" + id + ", documento=" + documento + ", nombre=" + nombre + ", apellido=" + apellido
-				+ ", mail=" + mail + ", telefono=" + telefono + "]";
+				+ ", mail=" + mail + ", telefono=" + telefono + ", tipoDocumento=" + tipoDocumento + ", ficha=" + ficha
+				+ ", trimestre=" + trimestre + "]";
 	}
+
 
 	private static final long serialVersionUID = 1L;
 

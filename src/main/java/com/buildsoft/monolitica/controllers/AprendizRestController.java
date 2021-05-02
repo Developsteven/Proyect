@@ -138,6 +138,8 @@ public class AprendizRestController {
 			aprendizActual.setDocumento(aprendiz.getDocumento());
 			aprendizActual.setTelefono(aprendiz.getTelefono());
 			aprendizActual.setTipoDocumento(aprendiz.getTipoDocumento());
+			aprendizActual.setFicha(aprendiz.getFicha());
+			aprendizActual.setTrimestre(aprendiz.getTrimestre());
 
 			aprendizUpdated = usuarioServices.createAprendiz(aprendizActual);
 
