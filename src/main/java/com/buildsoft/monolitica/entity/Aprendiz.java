@@ -1,7 +1,10 @@
 package com.buildsoft.monolitica.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,12 +13,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
-
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "aprendices")
@@ -57,13 +61,18 @@ public class Aprendiz implements Serializable{
 	private Ficha ficha;
 	
 	@NotNull
-	@ManyToOne(fetch = FetchType.EAGER)
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_trimestre_fk")
 	private Trimestre trimestre;
 	
+	@JsonIgnoreProperties(value={"aprendiz", "hibernateLazyInitializer", "handler"}, allowSetters = true)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "aprendiz", cascade = CascadeType.ALL)
+	private List<Novedad> novedades;
+	
 	
 	public Aprendiz() {
-		
+		this.novedades = new ArrayList<>();
 	}
 	
 	
@@ -129,11 +138,21 @@ public class Aprendiz implements Serializable{
 		this.trimestre = trimestre;
 	}
 
+	public List<Novedad> getNovedades() {
+		return novedades;
+	}
+
+
+	public void setNovedades(List<Novedad> novedades) {
+		this.novedades = novedades;
+	}
+
+
 	@Override
 	public String toString() {
 		return "Aprendiz [id=" + id + ", documento=" + documento + ", nombre=" + nombre + ", apellido=" + apellido
 				+ ", mail=" + mail + ", telefono=" + telefono + ", tipoDocumento=" + tipoDocumento + ", ficha=" + ficha
-				+ ", trimestre=" + trimestre + "]";
+				+ ", trimestre=" + trimestre + ", novedades=" + novedades + "]";
 	}
 
 

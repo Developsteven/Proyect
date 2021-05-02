@@ -7,6 +7,7 @@ import org.springframework.data.domain.Pageable;
 
 import com.buildsoft.monolitica.entity.Aprendiz;
 import com.buildsoft.monolitica.entity.Ficha;
+import com.buildsoft.monolitica.entity.Novedad;
 import com.buildsoft.monolitica.entity.Rol;
 import com.buildsoft.monolitica.entity.TipoDocumento;
 import com.buildsoft.monolitica.entity.Trimestre;
@@ -38,4 +39,6 @@ public interface IUsuarioServices {
 	public List<Trimestre> findAllTrimestres();
 	
 	public List<Ficha> findAllFichas();
+	
+	
 }
