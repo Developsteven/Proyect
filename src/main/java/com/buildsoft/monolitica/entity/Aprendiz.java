@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 
 
@@ -45,16 +46,17 @@ public class Aprendiz implements Serializable{
 	@Column( nullable = false)
 	private String telefono;
 	
+	@NotNull
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_tipoDocumento_fk", nullable = false)
 	private TipoDocumento tipoDocumento;
 	
-	
+	@NotNull
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_ficha_fk")
 	private Ficha ficha;
 	
-	
+	@NotNull
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_trimestre_fk")
 	private Trimestre trimestre;

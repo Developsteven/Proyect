@@ -6,8 +6,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import com.buildsoft.monolitica.entity.Aprendiz;
+import com.buildsoft.monolitica.entity.Ficha;
 import com.buildsoft.monolitica.entity.Rol;
 import com.buildsoft.monolitica.entity.TipoDocumento;
+import com.buildsoft.monolitica.entity.Trimestre;
 import com.buildsoft.monolitica.entity.Usuario;
 
 
@@ -32,4 +34,8 @@ public interface IUsuarioServices {
 	public Aprendiz createAprendiz(Aprendiz aprendiz);
 	
 	public List<TipoDocumento> findAllDocumento();
+	
+	public List<Trimestre> findAllTrimestres();
+	
+	public List<Ficha> findAllFichas();
 }

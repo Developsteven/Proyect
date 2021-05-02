@@ -9,12 +9,16 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.buildsoft.monolitica.dao.IAprendizDao;
+import com.buildsoft.monolitica.dao.IFichaDao;
 import com.buildsoft.monolitica.dao.IRolDao;
 import com.buildsoft.monolitica.dao.ITipoDocumentoDao;
+import com.buildsoft.monolitica.dao.ITrimestreDao;
 import com.buildsoft.monolitica.dao.IUsuarioDao;
 import com.buildsoft.monolitica.entity.Aprendiz;
+import com.buildsoft.monolitica.entity.Ficha;
 import com.buildsoft.monolitica.entity.Rol;
 import com.buildsoft.monolitica.entity.TipoDocumento;
+import com.buildsoft.monolitica.entity.Trimestre;
 import com.buildsoft.monolitica.entity.Usuario;
 import com.buildsoft.monolitica.services.IUsuarioServices;
 
@@ -33,6 +37,12 @@ public class UsuarioServices implements IUsuarioServices{
 	
 	@Autowired
 	private ITipoDocumentoDao documentoDao;
+	
+	@Autowired
+	private IFichaDao fichaDao;
+	
+	@Autowired
+	private ITrimestreDao trimestreDao;
 	
 	@Override
 	@Transactional(readOnly = true)
@@ -93,6 +103,18 @@ public class UsuarioServices implements IUsuarioServices{
 	@Transactional(readOnly = true)
 	public Page<Aprendiz> findAllAprendiz(Pageable pageable) {
 		return aprendizDao.findAll(pageable);
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public List<Trimestre> findAllTrimestres() {
+		return (List<Trimestre>) trimestreDao.findAll();
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public List<Ficha> findAllFichas() {
+		return (List<Ficha>) fichaDao.findAll();
 	}
 
 

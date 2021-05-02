@@ -25,7 +25,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.buildsoft.monolitica.entity.Aprendiz;
+import com.buildsoft.monolitica.entity.Ficha;
 import com.buildsoft.monolitica.entity.TipoDocumento;
+import com.buildsoft.monolitica.entity.Trimestre;
 import com.buildsoft.monolitica.services.IUsuarioServices;
 
 @CrossOrigin(origins = { "http://localhost:4200" })
@@ -158,6 +160,17 @@ public class AprendizRestController {
 	@GetMapping("/aprendiz/tipoDocumentos")
 	public List<TipoDocumento> listarDocumentos(){
 		return usuarioServices.findAllDocumento();
+	}
+	
+	
+	@GetMapping("/aprendiz/fichas")
+	public List<Ficha> listarFichas(){
+		return usuarioServices.findAllFichas();
+	}
+	
+	@GetMapping("/aprendiz/trimestres")
+	public List<Trimestre> listarTrimestres(){
+		return usuarioServices.findAllTrimestres();
 	}
 	
 }
