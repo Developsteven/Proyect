@@ -40,5 +40,9 @@ public interface IUsuarioServices {
 	
 	public List<Ficha> findAllFichas();
 	
+	public Novedad findByIdNovedad(Long id);
+	
+	public Novedad createNovedad(Novedad novedad);
+	
 	
 }
