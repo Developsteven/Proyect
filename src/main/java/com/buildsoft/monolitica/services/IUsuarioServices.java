@@ -10,6 +10,7 @@ import com.buildsoft.monolitica.entity.Ficha;
 import com.buildsoft.monolitica.entity.Novedad;
 import com.buildsoft.monolitica.entity.Rol;
 import com.buildsoft.monolitica.entity.TipoDocumento;
+import com.buildsoft.monolitica.entity.TipoNovedad;
 import com.buildsoft.monolitica.entity.Trimestre;
 import com.buildsoft.monolitica.entity.Usuario;
 
@@ -43,6 +44,10 @@ public interface IUsuarioServices {
 	public Novedad findByIdNovedad(Long id);
 	
 	public Novedad createNovedad(Novedad novedad);
+	
+	public List<TipoNovedad> findAllTipoNovedad();
+	
+	public Aprendiz findByDocumento(String term);
 	
 	
 }

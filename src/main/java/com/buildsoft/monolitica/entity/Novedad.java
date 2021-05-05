@@ -41,7 +41,10 @@ public class Novedad implements Serializable{
 	@JoinColumn(name="id_aprendiz_fk")
 	private Aprendiz aprendiz;
 	
-
+	@JsonIgnoreProperties(value={"novedades","hibernateLazyInitializer", "handler"}, allowSetters = true)
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="id_tipo_novedad_fk")
+	private TipoNovedad tipoNovedad;
 	
 	@PrePersist
 	public void declararFecha() {
@@ -96,6 +99,16 @@ public class Novedad implements Serializable{
 
 	public void setAprendiz(Aprendiz aprendiz) {
 		this.aprendiz = aprendiz;
+	}
+
+
+	public TipoNovedad getTipoNovedad() {
+		return tipoNovedad;
+	}
+
+
+	public void setTipoNovedad(TipoNovedad tipoNovedad) {
+		this.tipoNovedad = tipoNovedad;
 	}
 
 

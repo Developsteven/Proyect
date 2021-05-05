@@ -13,6 +13,7 @@ import com.buildsoft.monolitica.dao.IFichaDao;
 import com.buildsoft.monolitica.dao.INovedadDao;
 import com.buildsoft.monolitica.dao.IRolDao;
 import com.buildsoft.monolitica.dao.ITipoDocumentoDao;
+import com.buildsoft.monolitica.dao.ITipoNovedadDao;
 import com.buildsoft.monolitica.dao.ITrimestreDao;
 import com.buildsoft.monolitica.dao.IUsuarioDao;
 import com.buildsoft.monolitica.entity.Aprendiz;
@@ -20,6 +21,7 @@ import com.buildsoft.monolitica.entity.Ficha;
 import com.buildsoft.monolitica.entity.Novedad;
 import com.buildsoft.monolitica.entity.Rol;
 import com.buildsoft.monolitica.entity.TipoDocumento;
+import com.buildsoft.monolitica.entity.TipoNovedad;
 import com.buildsoft.monolitica.entity.Trimestre;
 import com.buildsoft.monolitica.entity.Usuario;
 import com.buildsoft.monolitica.services.IUsuarioServices;
@@ -48,6 +50,9 @@ public class UsuarioServices implements IUsuarioServices{
 	
 	@Autowired
 	private INovedadDao novedadDao;
+	
+	@Autowired
+	private ITipoNovedadDao tipoNovedadDao;
 	
 	@Override
 	@Transactional(readOnly = true)
@@ -132,6 +137,18 @@ public class UsuarioServices implements IUsuarioServices{
 	@Transactional(readOnly = false)
 	public Novedad createNovedad(Novedad novedad) {
 		return novedadDao.save(novedad);
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public List<TipoNovedad> findAllTipoNovedad() {
+		return (List<TipoNovedad>) tipoNovedadDao.findAll();
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public Aprendiz findByDocumento(String term) {
+		return aprendizDao.findByDocumento(term);
 	}
 
 
