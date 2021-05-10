@@ -1,15 +1,20 @@
 package com.buildsoft.monolitica.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
@@ -41,11 +46,13 @@ public class Usuario implements Serializable{
 	private String password;
 
 	@Column(nullable = false)
-	private boolean estado;
+	private Boolean estado;
 	
-	@OneToOne
-	@JoinColumn(name = "id_rol_fk", nullable = false)
-	private Rol rol;
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinTable(name="usuarios_roles", joinColumns = @JoinColumn(name="usuario_id"),
+	inverseJoinColumns = @JoinColumn(name="rol_id"),
+	uniqueConstraints = {@UniqueConstraint(columnNames = {"usuario_id","rol_id"})})
+	private List<Rol> rol;
 	
 
 
@@ -80,24 +87,23 @@ public class Usuario implements Serializable{
 	}
 
 
-	public boolean isEstado() {
+	public Boolean getEstado() {
 		return estado;
 	}
 
-	public void setEstado(boolean estado) {
+	public void setEstado(Boolean estado) {
 		this.estado = estado;
 	}
 
 	
-	public Rol getRol() {
+	public List<Rol> getRol() {
 		return rol;
 	}
 
-
-	public void setRol(Rol rol) {
+	public void setRol(List<Rol> rol) {
 		this.rol = rol;
 	}
-	
+
 	public String getPassword() {
 		return password;
 	}

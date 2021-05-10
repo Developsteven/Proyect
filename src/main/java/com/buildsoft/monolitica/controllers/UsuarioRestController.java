@@ -137,7 +137,7 @@ public class UsuarioRestController {
 			usuarioActual.setApellido(usuario.getApellido());
 			usuarioActual.setNombre(usuario.getNombre());
 			usuarioActual.setMail(usuario.getMail());
-			usuarioActual.setEstado(usuario.isEstado());
+			usuarioActual.setEstado(usuario.getEstado());
 			usuarioActual.setRol(usuario.getRol());
 
 			usuarioUpdated = usuarioServices.create(usuarioActual);

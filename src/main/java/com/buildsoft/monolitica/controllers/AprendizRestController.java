@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.buildsoft.monolitica.entity.Aprendiz;
@@ -169,11 +168,6 @@ public class AprendizRestController {
 		return usuarioServices.findAllTrimestres();
 	}
 
-//	@ResponseStatus(HttpStatus.OK)
-//	public  List<Aprendiz> findByDocuemtno(@PathVariable String term){
-//		return usuarioServices.findByDocumento(term);
-//		
-//	}
 
 	@GetMapping("/aprendiz/documento/{term}")
 	public ResponseEntity<?> findByDocuemtno(@PathVariable String term) {
