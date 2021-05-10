@@ -19,7 +19,7 @@ import com.buildsoft.monolitica.dao.IUsuarioDao;
 import com.buildsoft.monolitica.entity.Usuario;
 
 @Service
-public class UsuarioService implements UserDetailsService {
+public class UsuarioService implements UserDetailsService, IUserService {
 	
 	private Logger logger = LoggerFactory.getLogger(UsuarioService.class);
 
@@ -44,6 +44,12 @@ public class UsuarioService implements UserDetailsService {
 				.collect(Collectors.toList());
 
 		return new User(usuario.getMail(), usuario.getPassword(), usuario.getEstado(), true, true, true, authorities);
+	}
+
+	@Override
+	@Transactional(readOnly=true)
+	public Usuario findByMail(String mail) {
+		return usuarioDao.findByMail(mail);
 	}
 
 }
