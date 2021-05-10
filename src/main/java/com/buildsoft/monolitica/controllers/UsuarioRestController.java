@@ -13,6 +13,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -40,16 +41,21 @@ public class UsuarioRestController {
 	@Autowired
 	private IRolDao rolDao;
 	
+	@Secured({"ROL_SuperAdmin","ROL_Administrativo"})
 	@GetMapping("/usuario")
 	public List<Usuario> index() {
 		return usuarioServices.findAll();
 	}
 	
+	
+	@Secured({"ROL_SuperAdmin","ROL_Administrativo"})
 	@GetMapping("/usuario/page/{page}")
 	public Page<Usuario> index(@PathVariable Integer page) {
 		return usuarioServices.findAll(PageRequest.of(page, 4));
 	}
 
+	
+	@Secured({"ROL_SuperAdmin","ROL_Administrativo"})
 	@PostMapping("/usuario")
 	public ResponseEntity<?> create(@Valid @RequestBody Usuario usuario, BindingResult result) {
 		
@@ -83,6 +89,7 @@ public class UsuarioRestController {
 	}
 	
 	
+	@Secured({"ROL_SuperAdmin","ROL_Administrativo"})
 	@GetMapping("/usuario/{id}")
 	public ResponseEntity<?> findByid(@PathVariable Long id) {
 		
@@ -106,6 +113,7 @@ public class UsuarioRestController {
 		return new ResponseEntity<Usuario>(usuario, HttpStatus.OK);
 	}
 	
+	@Secured({"ROL_SuperAdmin"})
 	@PutMapping("/usuario/{id}")
 	public ResponseEntity<?> update(@Valid @RequestBody Usuario usuario, BindingResult result, @PathVariable Long id){
 		
@@ -155,7 +163,7 @@ public class UsuarioRestController {
 	}
 	
 	
-	
+	@Secured({"ROL_SuperAdmin","ROL_Administrativo"})
 	@GetMapping("/usuario/rol")
 	public List<Rol> listarRoles() {
 		return (List<Rol>) rolDao.findAll();
