@@ -27,21 +27,21 @@ public class NovedadRestController {
 	@Autowired
 	private IUsuarioServices usuarioServices;
 	
-	@Secured({"ROL_SuperAdmin","ROL_Administrativo","ROL_Instructor"})
+
 	@GetMapping("/novedades/{id}")
 	@ResponseStatus(HttpStatus.OK)
 	public Novedad verNovedad(@PathVariable Long id) {
 		return usuarioServices.findByIdNovedad(id);
 	}
 	
-	@Secured({"ROL_SuperAdmin","ROL_Administrativo","ROL_Instructor"})
+
 	@PostMapping("/novedades")
 	@ResponseStatus( HttpStatus.CREATED)
 	public Novedad crearNovedad(@RequestBody Novedad novedad) {
 		return usuarioServices.createNovedad(novedad);
 	}
 	
-	@Secured({"ROL_SuperAdmin","ROL_Administrativo","ROL_Instructor"})
+
 	@GetMapping("/novedades/tipoNovedad")
 	@ResponseStatus(HttpStatus.OK)
 	public List<TipoNovedad> listarTipoNovedad() {

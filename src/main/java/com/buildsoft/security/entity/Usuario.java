@@ -33,9 +33,6 @@ public class Usuario implements Serializable {
 	@Column(nullable = false)
 	private String nombre;
 
-	@NotEmpty
-	@Column(nullable = false)
-	private String apellido;
 	
 	@Column(unique = true)
     private String nombreUsuario;
@@ -49,8 +46,6 @@ public class Usuario implements Serializable {
 	@Column(nullable = false)
 	private String password;
 
-	@Column(nullable = false)
-	private Boolean estado;
 
 	@NotNull
 	@ManyToMany(fetch = FetchType.EAGER)
@@ -86,13 +81,6 @@ public class Usuario implements Serializable {
 		this.nombre = nombre;
 	}
 
-	public String getApellido() {
-		return apellido;
-	}
-
-	public void setApellido(String apellido) {
-		this.apellido = apellido;
-	}
 
 	
 
@@ -120,13 +108,6 @@ public class Usuario implements Serializable {
 		this.password = password;
 	}
 
-	public Boolean getEstado() {
-		return estado;
-	}
-
-	public void setEstado(Boolean estado) {
-		this.estado = estado;
-	}
 
 	public Set<Rol> getRoles() {
 		return roles;
