@@ -11,11 +11,10 @@ import com.buildsoft.entity.Novedad;
 import com.buildsoft.entity.TipoDocumento;
 import com.buildsoft.entity.TipoNovedad;
 import com.buildsoft.entity.Trimestre;
-import com.buildsoft.security.entity.Rol;
 import com.buildsoft.security.entity.Usuario;
 
 
-public interface IUsuarioServices {
+public interface IAprendizServices {
 	
 	public List<Usuario> findAll();
 	

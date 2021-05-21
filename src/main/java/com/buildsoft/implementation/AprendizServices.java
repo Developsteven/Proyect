@@ -22,11 +22,11 @@ import com.buildsoft.entity.TipoNovedad;
 import com.buildsoft.entity.Trimestre;
 import com.buildsoft.security.entity.Usuario;
 import com.buildsoft.security.repository.UsuarioRepository;
-import com.buildsoft.services.IUsuarioServices;
+import com.buildsoft.services.IAprendizServices;
 
 
 @Service
-public class AprendizServices implements IUsuarioServices{
+public class AprendizServices implements IAprendizServices{
 
 	@Autowired
 	private UsuarioRepository usuarioDao;

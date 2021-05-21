@@ -11,6 +11,9 @@ public class NuevoUsuario {
 	
 	@NotBlank
     private String nombre;
+	
+	@NotBlank
+    private String apellido;
     @NotBlank
     private String nombreUsuario;
     @Email
@@ -51,7 +54,15 @@ public class NuevoUsuario {
         this.password = password;
     }
 
-    public Set<String> getRoles() {
+    public String getApellido() {
+		return apellido;
+	}
+
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+	}
+
+	public Set<String> getRoles() {
         return roles;
     }
 

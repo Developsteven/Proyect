@@ -32,8 +32,10 @@ public class Usuario implements Serializable {
 	@NotEmpty
 	@Column(nullable = false)
 	private String nombre;
-
 	
+	@Column(nullable = false)
+	private String apellido;
+
 	@Column(unique = true)
     private String nombreUsuario;
 
@@ -56,8 +58,9 @@ public class Usuario implements Serializable {
 
 	}
 	
-	 public Usuario(@NotNull String nombre, @NotNull String nombreUsuario, @NotNull String email, @NotNull String password) {
+	 public Usuario(@NotNull String nombre, String apellido, @NotNull String nombreUsuario, @NotNull String email, @NotNull String password) {
 	        this.nombre = nombre;
+	        this.apellido = apellido;
 	        this.nombreUsuario = nombreUsuario;
 	        this.email = email;
 	        this.password = password;
@@ -81,8 +84,13 @@ public class Usuario implements Serializable {
 		this.nombre = nombre;
 	}
 
+	public String getApellido() {
+		return apellido;
+	}
 
-	
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+	}
 
 	public String getNombreUsuario() {
 		return nombreUsuario;

@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.buildsoft.entity.Novedad;
 import com.buildsoft.entity.TipoNovedad;
-import com.buildsoft.services.IUsuarioServices;
+import com.buildsoft.services.IAprendizServices;
 
 @CrossOrigin(origins = { "http://localhost:4200" })
 @RestController
@@ -25,7 +25,7 @@ public class NovedadRestController {
 
 	
 	@Autowired
-	private IUsuarioServices usuarioServices;
+	private IAprendizServices usuarioServices;
 	
 
 	@GetMapping("/novedades/{id}")

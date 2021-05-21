@@ -27,7 +27,7 @@ import com.buildsoft.entity.Aprendiz;
 import com.buildsoft.entity.Ficha;
 import com.buildsoft.entity.TipoDocumento;
 import com.buildsoft.entity.Trimestre;
-import com.buildsoft.services.IUsuarioServices;
+import com.buildsoft.services.IAprendizServices;
 
 @CrossOrigin(origins = { "http://localhost:4200" })
 @RestController
@@ -35,7 +35,7 @@ import com.buildsoft.services.IUsuarioServices;
 public class AprendizRestController {
 
 	@Autowired
-	private IUsuarioServices usuarioServices;
+	private IAprendizServices usuarioServices;
 
 	@GetMapping("/aprendiz")
 	public List<Aprendiz> index() {
