@@ -16,6 +16,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.buildsoft.security.entity.Usuario;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
@@ -45,6 +46,11 @@ public class Novedad implements Serializable{
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="id_tipo_novedad_fk")
 	private TipoNovedad tipoNovedad;
+	
+	@JsonIgnoreProperties(value={"novedades","hibernateLazyInitializer", "handler"}, allowSetters = true)
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="id_usuario_fk")
+	private Usuario usuario;
 	
 	@PrePersist
 	public void declararFecha() {
@@ -109,6 +115,16 @@ public class Novedad implements Serializable{
 
 	public void setTipoNovedad(TipoNovedad tipoNovedad) {
 		this.tipoNovedad = tipoNovedad;
+	}
+
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 

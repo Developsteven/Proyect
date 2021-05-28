@@ -1,10 +1,12 @@
 package com.buildsoft.security.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashSet;
-
+import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -14,10 +16,13 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
+import com.buildsoft.entity.Novedad;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.istack.NotNull;
 
 @Entity
@@ -53,9 +58,14 @@ public class Usuario implements Serializable {
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "usuario_rol", joinColumns = @JoinColumn(name = "usuario_id"), inverseJoinColumns = @JoinColumn(name = "rol_id"))
 	private Set<Rol> roles = new HashSet<>();
+	
+	
+	@JsonIgnoreProperties(value={"aprendiz", "hibernateLazyInitializer", "handler"}, allowSetters = true)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "aprendiz", cascade = CascadeType.ALL)
+	private List<Novedad> novedades;
 
 	public Usuario() {
-
+		this.novedades = new ArrayList<>();
 	}
 	
 	 public Usuario(@NotNull String nombre, String apellido, @NotNull String nombreUsuario, @NotNull String email, @NotNull String password) {
@@ -123,6 +133,14 @@ public class Usuario implements Serializable {
 
 	public void setRoles(Set<Rol> roles) {
 		this.roles = roles;
+	}
+
+	public List<Novedad> getNovedades() {
+		return novedades;
+	}
+
+	public void setNovedades(List<Novedad> novedades) {
+		this.novedades = novedades;
 	}
 
 
